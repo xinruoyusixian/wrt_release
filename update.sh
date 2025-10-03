@@ -84,7 +84,13 @@ update_feeds() {
         [ -z "$(tail -c 1 "$BUILD_DIR/$FEEDS_CONF")" ] || echo "" >>"$BUILD_DIR/$FEEDS_CONF"
         echo "src-git small8 https://github.com/kenzok8/small-package" >>"$BUILD_DIR/$FEEDS_CONF"
     fi
-
+###################################################################################
+    # 检查并添加 alan-package 源
+    if ! grep -q "alan-package" "$BUILD_DIR/$FEEDS_CONF"; then
+        [ -z "$(tail -c 1 "$BUILD_DIR/$FEEDS_CONF")" ] || echo "" >>"$BUILD_DIR/$FEEDS_CONF"
+        echo "src-git alan https://github.com/xinruoyusixian/alan-package" >>"$BUILD_DIR/$FEEDS_CONF"
+    fi
+###########################################################################################    
     # 添加bpf.mk解决更新报错
     if [ ! -f "$BUILD_DIR/include/bpf.mk" ]; then
         touch "$BUILD_DIR/include/bpf.mk"
