@@ -183,7 +183,9 @@ update_golang() {
     fi
 }
 
-install_small8() {
+
+#未使用
+unuss_install_small8() {
     ./scripts/feeds install -p small8 -f xray-core xray-plugin dns2tcp dns2socks haproxy hysteria \
         naiveproxy shadowsocks-rust sing-box v2ray-core v2ray-geodata v2ray-geoview v2ray-plugin \
         tuic-client chinadns-ng ipt2socks tcping trojan-plus simple-obfs shadowsocksr-libev \
@@ -195,6 +197,15 @@ install_small8() {
         msd_lite luci-app-msd_lite cups luci-app-cupsd
 }
 
+
+install_small8() {
+    ./scripts/feeds install -p small8 -f mosdns luci-app-mosdns adguardhome luci-app-adguardhome  \
+         taskd luci-lib-xterm luci-lib-taskd luci-app-store  \
+       luci-app-istorex  netdata luci-app-netdata \
+        lucky luci-app-lucky  luci-app-amlogic  \
+        tailscale luci-app-tailscale oaf open-app-filter luci-app-oaf easytier luci-app-easytier \
+        msd_lite luci-app-msd_lite cups luci-app-cupsd
+}
 install_fullconenat() {
     if [ ! -d $BUILD_DIR/package/network/utils/fullconenat-nft ]; then
         ./scripts/feeds install -p small8 -f fullconenat-nft
